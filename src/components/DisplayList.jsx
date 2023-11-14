@@ -1,7 +1,7 @@
 function EducationListItem({ props }) {
 	return (
 		<li>
-			<div className="date-location" id={props.id}>
+			<div className="date-location">
 				<div className="date">
 					{`${props.startDate}` + "–" + `${props.endDate}`}
 				</div>
@@ -41,7 +41,6 @@ function DisplayList({ array, title }) {
 			{title === "Education" && (
 				<ul>
 					{array.map((item) => {
-						console.log(item);
 						return <EducationListItem key={item.id} props={item} />;
 					})}
 				</ul>
@@ -49,7 +48,6 @@ function DisplayList({ array, title }) {
 			{title === "Professional Experience" && (
 				<ul>
 					{array.map((item) => {
-						console.log(item);
 						return <PracticalListItem key={item.id} props={item} />;
 					})}
 				</ul>

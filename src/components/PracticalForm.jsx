@@ -1,64 +1,72 @@
 import CreateInput from "./CreateInput";
 
-function EducationForm({
+function PracticalForm({
 	onChange,
-	schoolName,
-	course,
+	practicalName,
+	title,
 	startDate,
 	endDate,
 	location,
+	description,
 	onSave,
 }) {
 	return (
-		<form className="orm">
+		<form className="form">
 			<CreateInput
-				id="school-name"
-				placeholder="Example University"
+				id="practical-name"
+				placeholder="Enter Company Name"
 				type="text"
-				labelText="School: "
-				value={schoolName}
+				labelText="Company Name: "
+				value={practicalName}
 				onChange={onChange}
 				required={true}
-				data-key="schoolName"
+				data-key="practicalName"
 			/>
 			<CreateInput
-				id="course"
-				placeholder="Example Course"
+				id="title"
+				placeholder="Enter Position Title"
 				type="text"
-				labelText="Program Name: "
-				value={course}
+				labelText="Position Title: "
+				value={title}
 				onChange={onChange}
 				required={true}
-				data-key="course"
+				data-key="title"
 			/>
 			<CreateInput
-				id="start-date"
-				placeholder="10/2019"
+				id="startDate"
+				placeholder="Enter Start Date"
 				type="text"
 				labelText="Start Date: "
 				value={startDate}
 				onChange={onChange}
-				required={true}
 				data-key="startDate"
 			/>
 			<CreateInput
-				id="end-date"
-				placeholder="07/2022"
+				id="endDate"
+				placeholder="Enter End Date"
 				type="text"
 				labelText="End Date: "
 				value={endDate}
 				onChange={onChange}
-				required={true}
 				data-key="endDate"
 			/>
 			<CreateInput
 				id="location"
-				placeholder="Egham, Surrey"
+				placeholder="Enter Location"
 				type="text"
 				labelText="Location: "
 				value={location}
 				onChange={onChange}
 				data-key="location"
+			/>
+			<CreateInput
+				id="description"
+				placeholder="Enter Description"
+				type="textarea"
+				labelText="Description: "
+				value={description}
+				onChange={onChange}
+				data-key="description"
 			/>
 			<button type="button">Delete</button>
 			<button type="button">Cancel</button>
@@ -69,4 +77,4 @@ function EducationForm({
 	);
 }
 
-export default EducationForm;
+export default PracticalForm;

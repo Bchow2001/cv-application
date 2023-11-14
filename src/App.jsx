@@ -2,8 +2,10 @@ import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import PersonalForm from "./components/PersonalForm";
 import EducationForm from "./components/EducationForm";
+import PracticalForm from "./components/PracticalForm";
 import "./App.css";
 import DisplayList from "./components/DisplayList";
+import DisplayEditList from "./components/EditList";
 
 function App() {
 	const [personalInfo, setPersonalInfo] = useState({
@@ -19,6 +21,19 @@ function App() {
 		},
 	});
 
+	const onPersonChange = (e) => {
+		let field = e.target.getAttribute("data-key");
+		let newPersonalInfo = personalInfo;
+
+		if (field.includes("address")) {
+			field = field.replace("address", "").toLowerCase();
+			newPersonalInfo["address"][field] = e.target.value;
+		} else {
+			newPersonalInfo[field] = e.target.value;
+		}
+		setPersonalInfo({ ...newPersonalInfo });
+	};
+
 	const [educationInfo, setEducationInfo] = useState([
 		{
 			schoolName: "Royal Holloway",
@@ -30,11 +45,11 @@ function App() {
 			id: uuid(),
 		},
 		{
-			schoolName: "Royal Holloway",
-			course: "Philosophy, Politics & Economics",
-			startDate: "10/2019",
-			endDate: "07/2022",
-			location: "Egham, Surrey",
+			schoolName: "Sexey's",
+			course: "GCSE",
+			startDate: "10/2013",
+			endDate: "07/2019",
+			location: "Bruton, Somerset",
 			grade: "First",
 			id: uuid(),
 		},
@@ -52,53 +67,36 @@ function App() {
 		},
 	]);
 
-	const onPersonChange = (e) => {
-		let field = e.target.getAttribute("data-key");
-		let newPersonalInfo = personalInfo;
-
-		if (field.includes("address")) {
-			field = field.replace("address", "").toLowerCase();
-			newPersonalInfo["address"][field] = e.target.value;
-			console.log(field);
-		} else {
-			newPersonalInfo[field] = e.target.value;
-		}
-		setPersonalInfo({ ...newPersonalInfo });
-	};
-
 	return (
 		<>
-			<PersonalForm
-				fullName={personalInfo.fullName}
-				email={personalInfo.emailAddress}
-				phone={personalInfo.phoneNumber}
-				address={personalInfo.address}
-				onChange={onPersonChange}
-			/>
-
-			<EducationForm
-				schoolName={educationInfo.schoolName}
-				course={educationInfo.course}
-				startDate={educationInfo.startDate}
-				endDate={educationInfo.endDate}
-				location={educationInfo.location}
-			/>
-
-			<DisplayList array={educationInfo} title="Education" />
-			<DisplayList
-				array={practicalInfo}
-				title="Professional Experience"
-			/>
-
-			<h1>{personalInfo.fullName}</h1>
-			<h2>{personalInfo.emailAddress}</h2>
-			<h2>{personalInfo.phoneNumber}</h2>
-			<h3>{personalInfo.address.country}</h3>
-			<h4>{personalInfo.address.city}</h4>
-			<h5>{personalInfo.address.post}</h5>
-			<h5>
-				{personalInfo.address.house + " " + personalInfo.address.street}
-			</h5>
+			<div>
+				<PersonalForm
+					fullName={personalInfo.fullName}
+					email={personalInfo.emailAddress}
+					phone={personalInfo.phoneNumber}
+					address={personalInfo.address}
+					onChange={onPersonChange}
+				/>
+				<h2>Education</h2>
+				<DisplayEditList
+					array={educationInfo}
+					title="Education"
+					setEducationInfo={setEducationInfo}
+				/>
+				<h2>Work</h2>
+				<DisplayEditList
+					array={practicalInfo}
+					title="Professional Experience"
+					setPracticalInfo={setPracticalInfo}
+				/>
+			</div>
+			<div>
+				<DisplayList array={educationInfo} title="Education" />
+				<DisplayList
+					array={practicalInfo}
+					title="Professional Experience"
+				/>
+			</div>
 		</>
 	);
 }
