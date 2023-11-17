@@ -9,6 +9,7 @@ function PracticalForm({
 	location,
 	description,
 	onSave,
+	onDelete,
 }) {
 	return (
 		<form className="form">
@@ -68,8 +69,9 @@ function PracticalForm({
 				onChange={onChange}
 				data-key="description"
 			/>
-			<button type="button">Delete</button>
-			<button type="button">Cancel</button>
+			<button type="button" onClick={onDelete}>
+				Delete
+			</button>
 			<button type="submit" onClick={onSave}>
 				Save
 			</button>

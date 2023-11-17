@@ -19,7 +19,7 @@ function EducationListItem({ props }) {
 function PracticalListItem({ props }) {
 	return (
 		<li>
-			<div className="date-location" id={props.id}>
+			<div className="date-location">
 				<div className="date">
 					{`${props.startDate}` + "–" + `${props.endDate}`}
 				</div>

@@ -8,9 +8,10 @@ function EducationForm({
 	endDate,
 	location,
 	onSave,
+	onDelete,
 }) {
 	return (
-		<form className="orm">
+		<form className="form">
 			<CreateInput
 				id="school-name"
 				placeholder="Example University"
@@ -60,8 +61,9 @@ function EducationForm({
 				onChange={onChange}
 				data-key="location"
 			/>
-			<button type="button">Delete</button>
-			<button type="button">Cancel</button>
+			<button type="button" onClick={onDelete}>
+				Delete
+			</button>
 			<button type="submit" onClick={onSave}>
 				Save
 			</button>

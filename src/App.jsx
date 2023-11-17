@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
 import PersonalForm from "./components/PersonalForm";
-import EducationForm from "./components/EducationForm";
-import PracticalForm from "./components/PracticalForm";
 import "./App.css";
+import DisplayPersonalInfo from "./components/DisplayPersonalInfo";
 import DisplayList from "./components/DisplayList";
 import DisplayEditList from "./components/EditList";
 
@@ -69,7 +68,7 @@ function App() {
 
 	return (
 		<>
-			<div>
+			<div className="form-wrapper">
 				<PersonalForm
 					fullName={personalInfo.fullName}
 					email={personalInfo.emailAddress}
@@ -90,7 +89,13 @@ function App() {
 					setPracticalInfo={setPracticalInfo}
 				/>
 			</div>
-			<div>
+			<div className="cv-wrapper">
+				<DisplayPersonalInfo
+					fullName={personalInfo.fullName}
+					email={personalInfo.emailAddress}
+					phone={personalInfo.phoneNumber}
+					address={personalInfo.address}
+				></DisplayPersonalInfo>
 				<DisplayList array={educationInfo} title="Education" />
 				<DisplayList
 					array={practicalInfo}
