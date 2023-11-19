@@ -27,5 +27,19 @@ li {
 .cv-wrapper {
 	padding-right: 20px;
 	padding-left: 20px;
-	text-align: center;
+	display: flex;
+	flex-direction: column;
+	place-items: center;
+}
+
+.personal-info {
+	display: flex;
+	gap: 100px;
+	align-items: center;
+	justify-content: space-around;
+}
+
+h4,
+h5 {
+	margin: 0;
 }

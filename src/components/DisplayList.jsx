@@ -5,12 +5,12 @@ function EducationListItem({ props }) {
 				<div className="date">
 					{`${props.startDate}` + "–" + `${props.endDate}`}
 				</div>
+				<div className="edu-details">
+					<div className="school-name">{props.schoolName}</div>
+					<div className="course">{props.course}</div>
+					<div className="grade">{"Grade: " + props.grade}</div>
+				</div>
 				<div className="location">{props.location}</div>
-			</div>
-			<div className="edu-details">
-				<div className="school-name">{props.schoolName}</div>
-				<span className="course">{props.course}</span>
-				<span className="grade">{props.grade}</span>
 			</div>
 		</li>
 	);
